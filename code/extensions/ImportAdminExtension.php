@@ -30,7 +30,9 @@ class ImportAdminExtension extends Extension
     {
         if ($doadd = Config::inst()->get(ModelAdmin::class, 'addbetterimporters')) {
             $modelclass = $this->owner->modelClass;
-            $grid = $form->Fields()->fieldByName($modelclass);
+            $grid = $form->Fields()->fieldByName(
+                str_replace('\\', '-', $modelclass)
+            );
             $config =  $grid->getConfig();
 
             //don't proceed if there is already an importer
@@ -42,7 +44,7 @@ class ImportAdminExtension extends Extension
                 return;
             }
             //allow config to avoid adding when there are existing importers
-            $importerClasses = $this->owner->stat('model_importers');
+            $importerClasses = $this->owner->config()->model_importers;
             if (
                 $doadd === "scaffolded" &&
                 !is_null($importerClasses) &&
