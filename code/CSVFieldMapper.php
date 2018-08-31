@@ -1,5 +1,12 @@
 <?php
 
+namespace ImportExport\CSV;
+
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
+use ImportExport\CSV\CSVPreviewer;
+use SilverStripe\Forms\DropdownField;
+
 /**
  * A visual interface for mapping field names.
  */
@@ -36,7 +43,7 @@ class CSVFieldMapper extends CSVPreviewer
         if (!$this->headings && !$this->mappablecols) {
             return;
         }
-        $out = new Arraylist();
+        $out = new ArrayList();
         foreach ($this->headings as $heading) {
             $dropdown = $this->createHeadingDropdown($heading);
             if (is_array($this->mappingvalues) &&

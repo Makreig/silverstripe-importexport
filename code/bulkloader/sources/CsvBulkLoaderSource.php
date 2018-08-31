@@ -1,8 +1,12 @@
 <?php
 
-use Goodby\CSV\Import\Standard\Interpreter;
+namespace ImportExport\Bulkloader\Source;
+
+use ArrayIterator;
 use Goodby\CSV\Import\Standard\Lexer;
+use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\LexerConfig;
+use ImportExport\Bulkloader\Source\BulkLoaderSource;
 
 /**
  * CSV file bulk loading source

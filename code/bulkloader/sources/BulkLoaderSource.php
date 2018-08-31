@@ -1,5 +1,9 @@
 <?php
 
+namespace ImportExport\Bulkloader\Source;
+
+use IteratorAggregate;
+
 /**
  * An abstract source to bulk load records from.
  * Provides an iterator for retrieving records from.

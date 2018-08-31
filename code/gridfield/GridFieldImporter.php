@@ -1,5 +1,18 @@
 <?php
 
+namespace ImportExport\Forms\GridField;
+
+use SilverStripe\View\ArrayData;
+use SilverStripe\View\Requirements;
+use SilverStripe\Forms\GridField\GridField;
+use ImportExport\Bulkloader\BetterBulkLoader;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use ImportExport\Forms\GridField\GridFieldImporter;
+use SilverStripe\Forms\GridField\GridField_FormAction;
+use SilverStripe\Forms\GridField\GridField_URLHandler;
+use ImportExport\Bulkloader\Source\CsvBulkLoaderSource;
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+
 /**
  * Adds a way to import data to the GridField's DataList
  */
@@ -162,6 +175,6 @@ class GridFieldImporter implements GridField_HTMLProvider, GridField_URLHandler
         $controller = $gridField->getForm()->getController();
         $handler    = new GridFieldImporter_Request($gridField, $this, $controller);
 
-        return $handler->handleRequest($request, DataModel::inst());
+        return $handler->handleRequest($request);
     }
 }

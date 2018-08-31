@@ -1,5 +1,12 @@
 <?php
 
+namespace ImportExport\Extensions;
+
+use SilverStripe\Core\Extension;
+use SilverStripe\Security\Member;
+use SilverStripe\Core\Config\Config;
+use ImportExport\Forms\GridField\GridFieldImporter;
+
 class ImportAdminExtension extends Extension
 {
     

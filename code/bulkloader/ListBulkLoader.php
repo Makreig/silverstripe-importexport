@@ -1,5 +1,10 @@
 <?php
 
+namespace ImportExport\Bulkloader;
+
+use SilverStripe\ORM\DataList;
+use ImportExport\Bulkloader\BetterBulkLoader_Result;
+
 /**
  * Peforms bulk loading, but works with a given DataList.
  */

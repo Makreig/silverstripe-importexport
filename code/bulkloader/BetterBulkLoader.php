@@ -1,4 +1,11 @@
 <?php
+
+namespace ImportExport\Bulkloader;
+
+use SilverStripe\Dev\BulkLoader;
+use SilverStripe\ORM\DataObject;
+use ImportExport\Bulkloader\Source\BulkLoaderSource;
+
 /**
  * The bulk loader allows large-scale uploads to SilverStripe via the ORM.
  *

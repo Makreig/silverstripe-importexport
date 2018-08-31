@@ -1,5 +1,10 @@
 <?php
 
+namespace ImportExport\Bulkloader;
+
+use ImportExport\Bulkloader\BetterBulkLoader;
+use ImportExport\Bulkloader\Source\CsvBulkLoaderSource;
+
 /**
  * Backwards copatible CsvBulkLoader
  * Almost api equivelant to CSVBulkLoader

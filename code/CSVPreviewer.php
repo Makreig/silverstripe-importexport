@@ -1,4 +1,10 @@
 <?php
+
+namespace ImportExport\CSV;
+
+use SilverStripe\Dev\CSVParser;
+use SilverStripe\View\ViewableData;
+
 /**
  * View the content of a given CSV file
  */

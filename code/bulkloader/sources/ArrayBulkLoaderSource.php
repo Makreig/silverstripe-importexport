@@ -1,5 +1,10 @@
 <?php
 
+namespace ImportExport\Bulkloader\Source;
+
+use ArrayIterator;
+use ImportExport\Bulkloader\Source\BulkLoaderSource;
+
 /**
  * Array Bulk Loader Source
  * Useful for testing bulk loader. The output is the same as input.
