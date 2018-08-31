@@ -19,6 +19,7 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Cache\CacheFactory;
+use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
 
 /**
  * Request handler that provides a seperate interface
@@ -258,7 +259,7 @@ class GridFieldImporter_Request extends RequestHandler
      *
      * @link UploadField->fileexists()
      */
-    public function fileexists(SS_HTTPRequest $request)
+    public function fileexists(HTTPRequest $request)
     {
         $uploadField = $this->getUploadField();
         return $uploadField->fileexists($request);
@@ -332,23 +333,29 @@ class GridFieldImporter_Request extends RequestHandler
     * @param HTTPRequest $request
     * @return string
     */
-   protected function getBackURL(HTTPRequest $request) {
-      // Initialize a sane default (basically redirects to root admin URL).
-      $controller = $this->getToplevelController();
-      $url = method_exists($this->requestHandler, "Link") ?
+   public function getBackURL() 
+    {
+        $request = $this->getRequest();
+        if (!$request) {
+            return null;
+        }
+
+        // Initialize a sane default (basically redirects to root admin URL).
+        $controller = $this->getToplevelController();
+        $url = method_exists($this->requestHandler, "Link") ?
             $this->requestHandler->Link() :
             $controller->Link();
 
-      // Try to parse out a back URL using standard framework technique.
-      if($request->requestVar('BackURL')) {
-         $url = $request->requestVar('BackURL');
-      } else if($request->isAjax() && $request->getHeader('X-Backurl')) {
-         $url = $request->getHeader('X-Backurl');
-      } else if($request->getHeader('Referer')) {
-         $url = $request->getHeader('Referer');
-      }
+        // Try to parse out a back URL using standard framework technique.
+        if($request->requestVar('BackURL')) {
+            $url = $request->requestVar('BackURL');
+        } else if($request->isAjax() && $request->getHeader('X-Backurl')) {
+            $url = $request->getHeader('X-Backurl');
+        } else if($request->getHeader('Referer')) {
+            $url = $request->getHeader('Referer');
+        }
 
-      return $url;
-   }
+        return $url;
+    }
 
 }

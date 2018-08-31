@@ -566,4 +566,9 @@ class BetterBulkLoader extends BulkLoader
     {
         return sprintf("%s: %s", $relationship, $title);
     }
+
+    public function preview($filepath)
+    {
+        return null;
+    }
 }
